@@ -1,16 +1,13 @@
 homebrew-unityversions
 ======================
 
-[![Build Status](https://travis-ci.org/wooga/homebrew-unityversions.svg?branch=master)](https://travis-ci.org/wooga/homebrew-unityversions)
-Unity release version Brew Cask 
-
 Usage
 -----
 
 To install unity versions form this cask simply tap this repository
 
 ```bash
-brew tap wooga/unityversions
+brew tap metakirby5/unityversions
 ```
 
 Now you can install any version hosted as cask with
@@ -60,10 +57,6 @@ Unity Versions available
 | 2018.1.0f2 |
 
 
-Adding a new Version
---------------------
-
-
 License
 -------
-[MIT License](LICENSE) Copyright (C) 2017 Wooga
+[MIT License](LICENSE) Copyright (C) 2017 Wooga, Ethan Chan
