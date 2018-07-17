@@ -57,6 +57,19 @@ Unity Versions available
 | 2018.1.0f2 |
 
 
+Adding a new Version
+--------------------
+
+```sh
+./generate [version label] [version hash]
+```
+
+e.g.
+
+```sh
+./generate 2017.4.6f1 c24f30193bac
+```
+
 License
 -------
 [MIT License](LICENSE) Copyright (C) 2017 Wooga, Ethan Chan
