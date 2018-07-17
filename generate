@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+usage() {
+  echo "$(basename "$0") [version label] [version hash]"
+  exit 1
+}
+
+[ "$#" -ne 2 ] && usage
+
+cd "$(dirname "$0")"
+for f in templates/*; do
+  filename="${f##templates/}"
+  echo "==== Generating $filename"
+
+  url="$(< "$f" \
+    sed "s/#{version\.before_comma}/$1/g" |
+    sed "s/#{version\.after_comma}/$2/g" |
+    awk '/url/ { gsub ("\"", ""); print $2 }')"
+  echo "== Downloading $url"
+
+  sha="$(curl "$url" | sha256sum | cut -d\  -f1)"
+  echo "== SHA: $sha"
+
+  dest="Casks/${filename%%.rb}@$1.rb"
+  < "$f" \
+    sed "s/__VERSION_BEFORE_COMMA__/$1/g" |
+    sed "s/__VERSION_AFTER_COMMA__/$2/g" |
+    sed "s/__SHA256__/$sha/g" \
+    > "$dest"
+  echo "== Wrote to $dest"
+done
